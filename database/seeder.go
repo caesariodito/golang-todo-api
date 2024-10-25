@@ -13,6 +13,14 @@ func _Seeder(db *gorm.DB) {
 }
 
 func SeedTodos(db *gorm.DB) {
+	// Check if there are already todos in the database
+	var count int64
+	db.Model(&models.Todo{}).Count(&count)
+	if count > 0 {
+		fmt.Println("Todos already seeded, skipping seeder.")
+		return
+	}
+
 	todos := []models.Todo{
 		{
 			ID:          uuid.New().String(),

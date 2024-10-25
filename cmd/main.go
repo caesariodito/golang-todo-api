@@ -24,6 +24,7 @@ func main() {
 	})
 
 	app.Get("/todos", handlers.GetTodos)
+	app.Post("/todo", handlers.AddTodo)
 
 	log.Fatal(app.Listen(":3000"))
 }
