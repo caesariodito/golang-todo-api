@@ -24,7 +24,10 @@ func main() {
 	})
 
 	app.Get("/todos", handlers.GetTodos)
+	app.Get("/todos/:id", handlers.GetTodo)
 	app.Post("/todo", handlers.AddTodo)
+	app.Put("/todos/:id", handlers.UpdateTodo)
+	app.Delete("/todos/:id", handlers.DeleteTodo)
 
 	log.Fatal(app.Listen(":3000"))
 }
