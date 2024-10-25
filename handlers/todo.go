@@ -93,5 +93,5 @@ func DeleteTodo(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).SendString("Failed to delete todo")
 	}
 
-	return c.Status(fiber.StatusOK).JSON(todo)
+	return c.JSON(fiber.Map{"message": "Todo deleted successfully", "deleted_todo": todo})
 }
